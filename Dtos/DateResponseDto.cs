@@ -8,7 +8,7 @@ namespace OSOS_Task_ASP.Dtos
 {
     public class DateResponseDto
     {
-        public DateTime EndDate{ get; set; }
-        public List<DayDetails> DayDetails{ get; set; }
+        public DateOnly EndDate{ get; set; }
+        public List<DayDetails>? DayDetails { get; set; }
     }
 }

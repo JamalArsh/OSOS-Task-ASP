@@ -25,12 +25,8 @@ namespace OSOS_Task_ASP.Controllers
             if (string.IsNullOrWhiteSpace(request.StartDate.ToString()))
                 return BadRequest("Invalid input for start date");
 
-            if (request.WorkingDays == null || request.WorkingDays <= 0)
+            if (request.WorkingDays <= 0)
                 return BadRequest("Invalid input for working days");
-
-            Console.WriteLine("Controller method");
-            Console.WriteLine("Request start date: " + request.StartDate);
-            Console.WriteLine("Request working days: " + request.WorkingDays);
             var response = await _dateService.CalculateEndDate(request.StartDate, request.WorkingDays);
 
             if(response == null)

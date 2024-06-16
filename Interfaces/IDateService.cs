@@ -4,6 +4,6 @@ namespace OSOS_Task_ASP.Interfaces
 {
     public interface IDateService
     {
-        Task<DateResponseDto> CalculateEndDate(DateTime startDate, int workingDays);
+        Task<DateResponseDto> CalculateEndDate(DateOnly startDate, int workingDays);
     }
 }

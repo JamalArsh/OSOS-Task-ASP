@@ -3,7 +3,7 @@ POST http://localhost:5237/api/date
 Content-Type: application/json
 
 {
-    "startDate": "2022-08-18T00:00:00",
+    "startDate": "2022-08-18",
     "workingDays": 10
 }
 ###
@@ -12,6 +12,6 @@ POST http://localhost:5237/api/date
 Content-Type: application/json
 
 {
-    "startDate": "2022-08-18T18:30:00",
+    "startDate": "2024-06-15",
     "workingDays": 10
 }

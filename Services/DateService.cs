@@ -1,23 +1,19 @@
 using OSOS_Task_ASP.Dtos;
 using OSOS_Task_ASP.Interfaces;
 using OSOS_Task_ASP.Models;
-using OSOS_Task_ASP.Models.HolidayApiResponse;
+using OSOS_Task_ASP.Models.CalendarificResponseClasses;
 using Newtonsoft.Json.Linq;
 
 namespace OSOS_Task_ASP.Services
 {
     public class DateService : IDateService
     {
-        public async Task<DateResponseDto?> CalculateEndDate(DateTime startDate, int workingDays)
+        public async Task<DateResponseDto?> CalculateEndDate(DateOnly startDate, int workingDays)
         {
-            Console.WriteLine("Service method has called");
-            Console.WriteLine("Service received start date: " + startDate.ToString());
-            Console.WriteLine("Service received working days: " + workingDays);
-
             var currentDate = startDate;
             var daysCounted = 0;
             var daysDetails = new List<DayDetails>();
-            List<DateTime> holidays;
+            List<DateOnly> holidays;
 
             try
             {
@@ -25,6 +21,8 @@ namespace OSOS_Task_ASP.Services
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
                 return null;
             }
 
@@ -56,16 +54,10 @@ namespace OSOS_Task_ASP.Services
             };
         }
 
-        private async Task<List<DateTime>> GetHolidaysAsync(int startYear, int endYear)
+        private async Task<List<DateOnly>> GetHolidaysAsync(int startYear, int endYear)
         {
-            Console.WriteLine("GetHolidays method has been called");
-            Console.WriteLine("GetHolidays reveived year: " + startYear);
-
-            Console.WriteLine("GetHolidays method has been called");
-            Console.WriteLine("GetHolidays reveived year: " + endYear);
-
             var apiKey = Environment.GetEnvironmentVariable("CALENDARIFIC_API_KEY");
-            List<DateTime> holidayDates = new List<DateTime>();
+            List<DateOnly> holidayDates = new List<DateOnly>();
 
             for(int year = startYear; year <= endYear; year++)
             {
@@ -80,13 +72,14 @@ namespace OSOS_Task_ASP.Services
                     JObject holidaysJson = JObject.Parse(jsonResponse);
                     JArray? holidays = holidaysJson["response"]["holidays"] as JArray;
 
-                    Console.WriteLine("List of holidays");
-
                     foreach (var holiday in holidays)
                     {
                         DateDetails dateDetails = holiday["date"].ToObject<DateDetails>();
-                        DateTime holidayDate = dateDetails.ToDateTime();
-                        Console.WriteLine(holidayDate.ToString());
+
+                        DateOnly holidayDate = new DateOnly(dateDetails.DateTime.Year,
+                                                            dateDetails.DateTime.Month, 
+                                                            dateDetails.DateTime.Day);
+
                         holidayDates.Add(holidayDate);
                     }
                 }

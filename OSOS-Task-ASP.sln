@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSOS-Task-ASP", "OSOS-Task-ASP.csproj", "{F7E2110D-2C8A-4096-A094-93A876A15024}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSOS-Task_ASP.Tests", "..\OSOS-Task_ASP.Tests\OSOS-Task_ASP.Tests.csproj", "{0A6E2372-E285-4FC0-A69B-B5521D24F47C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F7E2110D-2C8A-4096-A094-93A876A15024}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7E2110D-2C8A-4096-A094-93A876A15024}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7E2110D-2C8A-4096-A094-93A876A15024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A6E2372-E285-4FC0-A69B-B5521D24F47C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6E2372-E285-4FC0-A69B-B5521D24F47C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6E2372-E285-4FC0-A69B-B5521D24F47C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6E2372-E285-4FC0-A69B-B5521D24F47C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
